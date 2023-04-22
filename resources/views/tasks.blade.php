@@ -14,14 +14,22 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach( $tasks as $task)
+                    @forelse($tasks as $task)
                         <tr>
                             <td class="border px-4 py-2">{{ $task->title }}</td>
                             <td class="border px-4 py-2">
-                                <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 cursor-pointer" >
+                                <label>
+                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 cursor-pointer">
+                                </label>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td class="border px-4 py-2"></td>
+                            <td class="border px-4 py-2"></td>
+                        </tr>
+                        <p class="text-center py-4">No tasks found.</p>
+                    @endforelse
                     </tbody>
                 </table>
                 <a href="{{ route('create.task') }}" class="mt-5 p-3 border-2 bg-red-400 rounded-md text-white inline-block hover:bg-red-700">CREATE</a>
