@@ -15,11 +15,7 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-Route::get('/', function () {
-    return view('tasks', [
-        'tasks' => Task::all()
-    ]);
-});
+Route::get('/', [TaskController::class, 'index']);
 
 Route::get('create', function () {
     return view('create');
